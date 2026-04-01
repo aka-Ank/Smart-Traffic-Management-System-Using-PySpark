@@ -14,22 +14,6 @@ Implemented features:
 - Scalable processing with PySpark DataFrame APIs and window functions
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ## Dataset note
 
 The source datasets contain sensor speeds and pairwise road-network distances, but do not include raw vehicle counts, GPS coordinates, parking occupancy, or public transport tap-in records. This project therefore uses practical proxies:
@@ -71,11 +55,16 @@ If Spark fails to start with `JAVA_GATEWAY_EXITED`, verify that:
 
 ## Run the pipeline
 
+---------------------------------------------------------------------
+In place of <user>, write your pc's user name
+Example: dataset-root /Users/aka_ank/Downloads/traffic-datasets \
+---------------------------------------------------------------------
+
 ```bash
 traffic-analytics run \
-  --dataset-root /Users/aka_ank/Downloads/traffic-datasets \
+  --dataset-root /Users/<user>/Downloads/traffic-datasets \
   --dataset METR-LA \
-  --output-root /Users/aka_ank/Documents/New\ project/output
+  --output-root /Users/<user>/Documents/New\ project/output
 ```
 
 This writes:
@@ -91,7 +80,7 @@ This writes:
 
 ```bash
 traffic-analytics optimize-route \
-  --dataset-root /Users/aka_ank/Downloads/traffic-datasets \
+  --dataset-root /Users/<user>/Downloads/traffic-datasets \
   --dataset METR-LA \
   --source 773869 \
   --target 717446
@@ -100,7 +89,7 @@ traffic-analytics optimize-route \
 ## Launch the dashboard
 
 ```bash
-streamlit run /Users/aka_ank/Documents/New\ project/dashboard/app.py
+streamlit run /Users/<user>/Documents/New\ project/dashboard/app.py
 ```
 
 Set `TRAFFIC_OUTPUT_ROOT` if you want the dashboard to read a different output directory.
