@@ -93,3 +93,11 @@ streamlit run /Users/<user>/Documents/New\ project/dashboard/app.py
 ```
 
 Set `TRAFFIC_OUTPUT_ROOT` if you want the dashboard to read a different output directory.
+
+Screenshots of Flask Project: 
+
+<img width="1688" height="914" alt="Screenshot 2026-04-25 at 10 08 46" src="https://github.com/user-attachments/assets/3c200cd6-57cd-4913-a361-e3a7248ecec2" />
+
+<img width="1580" height="946" alt="Screenshot 2026-04-25 at 10 09 29" src="https://github.com/user-attachments/assets/777b0937-d7f4-4a7c-9c01-2297341c101f" />
+
+<img width="1094" height="964" alt="Screenshot 2026-04-25 at 10 12 18" src="https://github.com/user-attachments/assets/31729d29-d0c6-4195-a5a2-7bd8b932ce01" />
