@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="card">
+    <h2>Prediction Results</h2>
+    <p>The same user input was passed to all three ML models.</p>
+
+    <h3>User Input</h3>
+    <table>
+        <tbody>
+            {% for key, value in input_data.items() %}
+            <tr>
+                <td>{{ key }}</td>
+                <td>{{ value }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h3>Model Predictions</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Model</th>
+                <th>Prediction Type</th>
+                <th>Prediction</th>
+                <th>Confidence Score</th>
+                <th>Saved Metrics</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in predictions %}
+            <tr>
+                <td>{{ item.model_name }}</td>
+                <td>{{ item.prediction_label }}</td>
+                <td>{{ item.prediction }}</td>
+                <td>{{ item.confidence_score if item.confidence_score is not none else "N/A" }}</td>
+                <td>
+                    {% for key, value in item.metrics.items() %}
+                    <div>{{ key }}: {{ value }}</div>
+                    {% endfor %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a class="button" href="/">Try Another Prediction</a>
+</section>
+{% endblock %}
+

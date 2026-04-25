@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="card">
+    <h2>Spark Jobs</h2>
+    <div class="actions">
+        <a class="button" href="/run-spark1">Run Spark 1</a>
+        <a class="button" href="/run-spark2">Run Spark 2</a>
+        <a class="button" href="/run-spark3">Run Spark 3</a>
+    </div>
+</section>
+
+<section class="card">
+    <h2>Prediction Form</h2>
+    <p class="muted">The same input is sent to all 3 ML models.</p>
+
+    {% if errors %}
+    <div class="error-box">
+        <ul>
+            {% for error in errors %}
+            <li>{{ error }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+
+    <form action="/predict" method="post" class="grid-form">
+        {% for field in fields %}
+        <label>
+            <span>{{ field.label }}</span>
+            <input
+                type="{{ field.type }}"
+                name="{{ field.name }}"
+                step="{{ field.step }}"
+                value="{{ form_values.get(field.name, '') }}"
+                required
+            >
+        </label>
+        {% endfor %}
+        <button type="submit" class="button">Predict With All Models</button>
+    </form>
+</section>
+
+<section class="card">
+    <h2>Example Dummy Input</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Field</th>
+                <th>Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for key, value in example_input.items() %}
+            <tr>
+                <td>{{ key }}</td>
+                <td>{{ value }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</section>
+{% endblock %}
+

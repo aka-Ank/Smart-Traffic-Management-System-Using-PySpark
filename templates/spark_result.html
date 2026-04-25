@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="card">
+    <h2>{{ result.job_name }}</h2>
+    <p>{{ result.description }}</p>
+
+    <h3>Summary</h3>
+    <table>
+        <tbody>
+            {% for key, value in result.summary.items() %}
+            <tr>
+                <td>{{ key }}</td>
+                <td>{{ value }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    {% if result.rows %}
+    <h3>Main Output</h3>
+    <table>
+        <thead>
+            <tr>
+                {% for key in result.rows[0].keys() %}
+                <th>{{ key }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in result.rows %}
+            <tr>
+                {% for value in row.values() %}
+                <td>{{ value }}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+
+    {% if result.transitions %}
+    <h3>Risk Transitions</h3>
+    <table>
+        <thead>
+            <tr>
+                {% for key in result.transitions[0].keys() %}
+                <th>{{ key }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in result.transitions %}
+            <tr>
+                {% for value in row.values() %}
+                <td>{{ value }}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+
+    {% if result.weekday_summary %}
+    <h3>Weekday Summary</h3>
+    <table>
+        <thead>
+            <tr>
+                {% for key in result.weekday_summary[0].keys() %}
+                <th>{{ key }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in result.weekday_summary %}
+            <tr>
+                {% for value in row.values() %}
+                <td>{{ value }}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+
+    <a class="button" href="/">Back to Home</a>
+</section>
+{% endblock %}
+
