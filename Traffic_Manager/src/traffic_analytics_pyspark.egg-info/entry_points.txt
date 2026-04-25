@@ -1,2 +1,0 @@
-[console_scripts]
-traffic-analytics = traffic_analytics.cli:main
